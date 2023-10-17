@@ -29,19 +29,19 @@ internal class Program
                 switch (tel.First())
                 {
                     case '9':
-                        tel += "+7";
+                        tel = "+7" + tel;
                         break;
                     case '8':
                         tel = "+7" + tel.Remove(0, 1);
                         break;
                     case '7':
-                        tel += "+";
+                        tel = "+" + tel;
                         break;
 
                     default:
                         break;
                 }
-                File.AppendAllText(path, "BEGIN:VCARD\r\nVERSION:2.1\r\nN:#" + sheet.Cells[i, 1].Value.ToString() + ";Tel;;;\r\nFN:Tel #" + sheet.Cells[i, 1].Value.ToString() + "\r\nTEL;CELL:" + tel + "\r\nEND:VCARD\r\n\r\n");
+                File.AppendAllText(path, "BEGIN:VCARD\r\nVERSION:2.1\r\nN:" + sheet.Cells[i, 1].Value.ToString() + ";;;;\r\nFN:" + sheet.Cells[i, 1].Value.ToString() + "\r\nTEL;CELL:" + tel + "\r\nEND:VCARD\r\n\r\n");
                 i++;
             }
         }
